@@ -6,7 +6,6 @@ import { ROUTES } from './app.route';
 
 import { AppComponent } from './app.component';
 import { PluginPartComponent } from './plugin-part/plugin-part.component';
-import { CodePartComponent } from './plugin-part/code-part/code-part.component';
 import { PluginHomeComponent } from './plugin-home/plugin-home.component';
 import {TextPipe} from './plugin-part/text-pipe';
 
@@ -14,7 +13,6 @@ import {TextPipe} from './plugin-part/text-pipe';
   declarations: [
     AppComponent,
     PluginPartComponent,
-    CodePartComponent,
     PluginHomeComponent,
     TextPipe
   ],

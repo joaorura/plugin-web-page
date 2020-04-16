@@ -1,0 +1,32 @@
+<div *ngIf="methodsModels === null; else pluginContent">
+  <div class="d-flex align-items-center">
+    <strong>Loading...</strong>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+</div>
+
+<ng-template #pluginContent>
+
+  <div *ngIf="methodsModels.length === 0; else content">
+    <h1>Sem Exemplos no Dataset</h1>
+  </div>
+
+  <ng-template #content>
+    <div class="accordion" id="accordionExample">
+      <div class="card" *ngFor="let method of methodsModels; let i = index">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{ method.method_name}}
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body" [innerHTML]="method.method_code | textPipe">
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
