@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import MethodsService from './methods.service';
 import MethodsModel from './methods.model';
 
+
 @Component({
   selector: 'app-plugin-part',
   templateUrl: './plugin-part.component.html',

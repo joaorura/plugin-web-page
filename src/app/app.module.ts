@@ -7,19 +7,25 @@ import { ROUTES } from './app.route';
 import { AppComponent } from './app.component';
 import { PluginPartComponent } from './plugin-part/plugin-part.component';
 import { PluginHomeComponent } from './plugin-home/plugin-home.component';
-import {TextPipe} from './plugin-part/text-pipe';
+import { HighlightModule } from 'ngx-highlightjs';
+
+export function getHighlightLanguages() {
+  return {
+    java: () => import('../../node_modules/highlight.js/lib/languages/java')
+  };
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     PluginPartComponent,
     PluginHomeComponent,
-    TextPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    HighlightModule
   ],
   providers: [],
   bootstrap: [AppComponent]

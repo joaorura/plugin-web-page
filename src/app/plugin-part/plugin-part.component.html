@@ -12,18 +12,35 @@
   </div>
 
   <ng-template #content>
-    <div class="accordion" id="accordionExample">
-      <div class="card" *ngFor="let method of methodsModels; let i = index">
-        <div class="card-header" id="headingOne">
-          <h2 class="mb-0">
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              {{ method.method_name}}
-            </button>
-          </h2>
-        </div>
+    <div *ngFor="let method of methodsModels; let i = index">
+      <div class="accordion" id="{{'accordionExample' + i}}">
+        <div class="card">
+          <div class="card-header" id="{{'heading' + i}}">
+            <h2 class="mb-0">
+              <button class="btn btn-link"
+                      type="button"
+                      data-toggle="collapse"
+                      [attr.data-target]="'#collapse' + i"
+                      aria-expanded="true"
+                      [attr.data-controls]="'collapse' + i"
+              >
+                {{ method.method_name }}
+              </button>
+            </h2>
+          </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body" [innerHTML]="method.method_code | textPipe">
+          <div id="{{'collapse' + i}}"
+               class="collapse"
+               [attr.aria-labelledby]="'heading' + i"
+               [attr.data-parent]="'#accordionExample' + i">
+            <div class="card-body">
+              <pre>
+                <code
+                  [highlight]="method.method_code"
+                  [languages]="['java']"
+                ></code>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
